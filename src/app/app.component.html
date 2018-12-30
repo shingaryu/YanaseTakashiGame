@@ -1,28 +1,24 @@
 <div class="login-dark">
   <nav class="navbar navbar-light navbar-expand-md navbar-main">
-      <div class="container-fluid"><a class="navbar-brand" href="#">Yanase Takashi Game</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+      <div class="container-fluid">
+          <a class="navbar-brand" routerLink="/">Yanase Takashi Game</a>
+          <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="navbar-toggler-icon"></span>
+          </button>
           <div class="collapse navbar-collapse"
               id="navcol-1">
               <ul class="nav navbar-nav">
-                  <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Play</a></li>
-                  <li class="nav-item" role="presentation"><a class="nav-link" href="#">Rule</a></li>
+                  <li class="nav-item" role="presentation">
+                      <a class="nav-link active" routerLink="/play">Play</a>
+                    </li>
+                  <li class="nav-item" role="presentation">
+                      <a class="nav-link">Rule</a>
+                    </li>
               </ul>
           </div>
       </div>
   </nav>
-  <div class="float-container">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12 play-title"><span>Yanase Takashi Game</span></div>
-        </div>
-        <div class="row">
-            <div class="col-xl-12 play-desc"><span>Convert "Yanase" to "Takashi" in your best speed and accuracy!</span></div>
-        </div>
-        <div class="row">
-            <div class="col-xl-12 button-container"><button class="btn btn-primary" type="button">Start</button></div>
-        </div>
-    </div>  
-  </div>
+  <router-outlet></router-outlet>
 </div>
 
-<!-- <router-outlet></router-outlet> -->
