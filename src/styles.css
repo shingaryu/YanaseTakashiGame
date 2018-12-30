@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+
+.nav-logo {
+  position: absolute;
+  right: 10px;
+  font-weight: 600;
+  font-size: large;
+}
+
+.play-title {
+  font-size: 40px;
+  text-align: center;
+}
+
+.navbar-main {
+  color: white !important;
+  background-color: rgb(89, 87, 92);
+  text-align: center;
+  opacity: 0.6;
+}
+
+.float-container {
+  background-color: #1e2833;
+  width: 60%;
+  height: 60%;
+  position: absolute;
+  left: 20%;
+  top: 20%;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+  color: white;
+  opacity: 0.9;
+  border-radius: 5px;
+}
+
+.play-desc {
+  text-align: center;
+}
+
+.button-container {
+  text-align: center;
+}
+
