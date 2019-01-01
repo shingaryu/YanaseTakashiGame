@@ -23,14 +23,14 @@
         </div>
         <div class="row" style="font-size: 64px;text-align: center;">
             <div class="col">
-                <span style="margin-right: 10px;">Q{{currentQuestionIndex}}.&nbsp;</span>
+                <span style="margin-right: 10px;">Q{{currentQuestionIndex+1}}.&nbsp;</span>
                 <span>{{currentQuestion}}</span>
             </div>
         </div>
         <div class="row" style="font-size: 34px;text-align: center;">
             <div class="col-xl-12">
-                <span style="margin-right: 10px;">A{{currentQuestionIndex}}.&nbsp;</span>
-                <input type="text" style="height: 70%;width: 200px;">
+                <span style="margin-right: 10px;">A{{currentQuestionIndex+1}}.&nbsp;</span>
+                <input type="text" style="height: 70%;width: 200px;" [(ngModel)]="currentUserAnswer">
             </div>
         </div>
         <div class="row" style="text-align: center;">
@@ -55,9 +55,13 @@
             <div class="col"><span>Let's look back your YanaTaka result...</span></div>
         </div>
         <div class="row" style="font-size: 34px;text-align: center;/*padding-left: 300px;*//*padding-right: 300px;*/">
-            <div class="col"><span>10</span></div>
-            <div class="col" style="color: green;"><i class="fa fa-star fa-check" style="margin-right: 5px;"></i><span>8</span></div>
-            <div class="col" style="color: red;"><i class="fa fa-star fa-times" style="margin-right: 5px;"></i><span>2</span></div>
+            <div class="col"><span>{{numberOfQuestions}}</span></div>
+            <div class="col" style="color: green;"><i class="fas fa-check" style="margin-right: 5px;"></i>
+                <span>{{numberOfCorrect}}</span>
+            </div>
+            <div class="col" style="color: red;"><i class="fas fa-times" style="margin-right: 5px;"></i>
+                <span>{{numberOfWrong}}</span>
+            </div>
         </div>
         <div class="row" style="text-align: center;">
             <div class="col"><span>Questions</span></div>
@@ -65,7 +69,7 @@
             <div class="col"><span>Wrong answers</span></div>
         </div>
         <div class="row" style="font-size: 34px;text-align: center;">
-            <div class="col-xl-12"><span style="margin-right: 10px;">Your Score: 80.00 %</span></div>
+            <div class="col-xl-12"><span style="margin-right: 10px;">Your Score: {{(numberOfCorrect/numberOfQuestions*100).toFixed(2)}} %</span></div>
         </div>
         <div class="row" style="padding-left: 15px;padding-right: 15px;margin-top: 20px;">
             <div class="col">
@@ -74,25 +78,29 @@
                     <div class="col" style="border: 1px solid;"><span>Correct answer</span></div>
                     <div class="col" style="border: 1px solid;"><span>Your answer</span></div>
                 </div>
-                <div class="row" style="text-align: center;">
-                    <div class="col" style="border: 1px solid;"><span>Q1.&nbsp;</span><span>やﾅせかｼた</span></div>
-                    <div class="col" style="border: 1px solid;"><span>た</span><span>ｶ</span><span style="color: green;">せ</span><span>か</span><span>ｼ</span><span>た</span></div>
-                    <div class="col" style="border: 1px solid;"><span>た</span><span>ｶ</span><span style="color: red;">し</span><span>か</span><span>ｼ</span><span>た</span></div>
-                </div>
-                <div class="row" style="text-align: center;">
-                    <div class="col" style="border: 1px solid;"><span>Q1.&nbsp;</span><span>やﾅせかｼた</span></div>
-                    <div class="col" style="border: 1px solid;"><span>た</span><span>ｶ</span><span style="color: green;">せ</span><span>か</span><span>ｼ</span><span>た</span></div>
-                    <div class="col" style="border: 1px solid;"><span>た</span><span>ｶ</span><span style="color: red;">し</span><span>か</span><span>ｼ</span><span>た</span></div>
-                </div>
-                <div class="row" style="text-align: center;">
-                    <div class="col" style="border: 1px solid;"><span>Q1.&nbsp;</span><span>やﾅせかｼた</span></div>
-                    <div class="col" style="border: 1px solid;"><span>た</span><span>ｶ</span><span style="color: green;">せ</span><span>か</span><span>ｼ</span><span>た</span></div>
-                    <div class="col" style="border: 1px solid;"><span>た</span><span>ｶ</span><span style="color: red;">し</span><span>か</span><span>ｼ</span><span>た</span></div>
-                </div>
-                <div class="row" style="text-align: center;">
-                    <div class="col" style="border: 1px solid;"><span>Q1.&nbsp;</span><span>やﾅせかｼた</span></div>
-                    <div class="col" style="border: 1px solid;"><span>た</span><span>ｶ</span><span style="color: green;">せ</span><span>か</span><span>ｼ</span><span>た</span></div>
-                    <div class="col" style="border: 1px solid;"><span>た</span><span>ｶ</span><span style="color: red;">し</span><span>か</span><span>ｼ</span><span>た</span></div>
+                <div *ngFor="let question of questions; let i=index" class="row" style="text-align: center;">
+                    <div class="col-xl-4 result-column">
+                        <span>Q{{i+1}}.&nbsp;</span>
+                        <span>{{questions[i]}}</span>
+                    </div>
+                    <div class="col-xl-4 result-column">
+                        <!-- <span>た</span>
+                        <span>ｶ</span>
+                        <span style="color: green;">せ</span>
+                        <span>か</span>
+                        <span>ｼ</span>
+                        <span>た</span> -->
+                        <span>{{answers[i]}}</span>
+                    </div>
+                    <div class="col-xl-4 result-column">
+                        <!-- <span>た</span>
+                        <span>ｶ</span>
+                        <span style="color: red;">し</span>
+                        <span>か</span>
+                        <span>ｼ</span>
+                        <span>た</span> -->
+                        <span>{{userAnswers[i]}}</span>
+                    </div>
                 </div>
             </div>
         </div>
