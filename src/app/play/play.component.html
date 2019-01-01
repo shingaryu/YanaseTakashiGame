@@ -1,5 +1,5 @@
 <div class="float-container">
-  <div class="collapse show collapse-after-start" id="game-title">
+  <div class="collapse show collapse-after-result collapse-after-start" id="game-title">
     <div class="container">
         <div class="row">
             <div class="col-xl-12 play-title"><span>Yanase Takashi Game</span></div>
@@ -9,12 +9,44 @@
         </div>
         <div class="row">
             <div class="col-xl-12 button-container">
-              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".collapse-after-start" aria-expanded="false">Start</button>
+              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".collapse-after-start" aria-expanded="false" (click)="onStartClick()">Start</button>
             </div>
         </div>
     </div>      
   </div>
-  <div class="collapse collapse-after-start" id="game-result">
+  <div class="collapse collapse-after-start collapse-after-quiz" id="game-quiz">
+    <div class="container" [hidden]="currentQuestionIndex>=numberOfQuestions">
+        <div class="row" style="font-size: 28px;text-align: right;">
+            <div class="col">
+                <span>Time: 00:12.34</span>
+            </div>
+        </div>
+        <div class="row" style="font-size: 64px;text-align: center;">
+            <div class="col">
+                <span style="margin-right: 10px;">Q{{currentQuestionIndex}}.&nbsp;</span>
+                <span>{{currentQuestion}}</span>
+            </div>
+        </div>
+        <div class="row" style="font-size: 34px;text-align: center;">
+            <div class="col-xl-12">
+                <span style="margin-right: 10px;">A{{currentQuestionIndex}}.&nbsp;</span>
+                <input type="text" style="height: 70%;width: 200px;">
+            </div>
+        </div>
+        <div class="row" style="text-align: center;">
+            <div class="col">
+                <button *ngIf="currentQuestionIndex<numberOfQuestions-1" class="btn btn-primary" type="button" style="margin-left: 10px;" (click)="onNextQuestionClick()">Next</button>
+                <button *ngIf="currentQuestionIndex>=numberOfQuestions-1" class="btn btn-primary" type="button" style="margin-left: 10px;" data-toggle="collapse" data-target=".collapse-after-quiz" aria-expanded="false" (click)="onNextQuestionClick()">Next</button>
+            </div>
+        </div>
+        <div class="row" style="text-align: center;">
+            <div class="col" style="margin-top: 100px;">
+                <span>Answer the question</span>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="collapse collapse-after-quiz collapse-after-result" id="game-result">
     <div class="container">
         <div class="row" style="font-size: 28px;">
             <div class="col"><span>Result</span></div>
@@ -65,7 +97,7 @@
             </div>
         </div>
         <div style="text-align: center;position: absolute;width: 95%;top: 90%;">
-          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".collapse-after-start" aria-expanded="false">OK</button>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".collapse-after-result" aria-expanded="false">OK</button>
         </div>
     </div>
   </div>

@@ -17,10 +17,10 @@ export class QuizService {
   }
 
   public randomQuestion(): string {
-    return null;
+    return 'やなたせいし'; // temporary
   }
 
   public answer(question: string): string {
-    return null;
+    return 'たかたしいし'; // temporary
   }
 }
